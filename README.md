@@ -11,15 +11,21 @@ Self contained application that converts sums of money to other major currencies
 When launched, the currency converter's GUI starts up, offering two panels. Each one has a drop down menu where two countries' currencies can be compared and calculated at the standard rate of conversion. User will be able to put in any input, returned in a formatted string with two decimal spaces. 
 
 For ease of sake, the values I use are:
+<ul>
 
-India at 1 USD to 74.0 INR, 
-China at 1 USD to 6.5 CNY
-US at 1 USD to 1 USD
-England at 1 USD to 0.75 GBP
-Japan at 1 USD to 110.0 JPY
-Russia at 1 USD to 74.0
+<li>India at 1 USD to 74.0 INR</li>
 
+<li>China at 1 USD to 6.5 CNY</li>
 
+<li>US at 1 USD to 1 USD</li>
+
+<li>England at 1 USD to 0.75 GBP</li>
+
+<li>Japan at 1 USD to 110.0 JPY</li>
+
+<li>Russia at 1 USD to 74.0</li>
+
+</ul>
 Tests were constructed alongside the project itself. JUnit allows for setting up a new instance of the currency converter for each test, as there is no memory storage for this application, and purely acts as a calculator. I also found that continually adding the convertButton to simulate clicking the button in the GUI was the exact same regardless, and added it to the @BeforeEach method to save on code space, even if it is a line.
 
 Arguably, I wonder if the dispose method is essential in this case, as when the GUI is closed, it'll close the entire application, however, I don't think it's bad practice to have it.
