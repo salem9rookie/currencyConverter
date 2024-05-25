@@ -1,10 +1,10 @@
 <h1>Java Based Currency Converter</h1>
 
 <h3>Technologies used:</h3> 
-IntelliJ IDE, 
-Javax Swing
-JUnit testing
-
+<ul><li>IntelliJ IDE </li>
+<li>Javax Swing</li>
+<li>JUnit testing</li>
+</ul>
 <h3>Criteria of the Project:</h3>
 Self contained application that converts sums of money to other major currencies. User will not be able to add non-numeric input without showing an error. Tests should match this conversion rate, and show the same output message for each. 
 
