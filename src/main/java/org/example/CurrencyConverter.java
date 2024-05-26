@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Currency;
+import java.text.NumberFormat;
 
 
 public class CurrencyConverter extends JFrame {
@@ -16,7 +18,7 @@ public class CurrencyConverter extends JFrame {
     private JTextField fromAmount;
     private JTextField toAmount;
     private Map<String, Double> conversionRates;
-
+    private Map<String, String> countryToCurrencyCode;
     //getters
 
 
@@ -38,15 +40,29 @@ public class CurrencyConverter extends JFrame {
 
 
     public CurrencyConverter() {
-        String[] countries = {"India", "China", "US", "England", "Japan", "Russia"};
+        String[] countries = {"India", "China", "US", "England", "Japan", "Russia", "Cayman Islands", "Kenya", "Vietnam"};
         //conversion rates put into hashmap for easier retrieval
         conversionRates = new HashMap<String, Double>();
         conversionRates.put("India", 74.0); // 1 USD to INR
         conversionRates.put("China", 6.5); // 1 USD to CNY
         conversionRates.put("US", 1.0); // 1 USD to USD
         conversionRates.put("England", 0.75); // 1 USD to GBP
-        conversionRates.put("Japan", 110.0); // 1 USD to JPY
+        conversionRates.put("Japan", 156.9); // 1 USD to JPY
         conversionRates.put("Russia", 74.0); // 1 USD to RUB
+        conversionRates.put("Cayman Islands", 0.83);
+        conversionRates.put("Kenya", 130.34);
+        conversionRates.put("Vietnam", 25471.00);
+
+        countryToCurrencyCode = new HashMap<>();
+        countryToCurrencyCode.put("India", "INR");
+        countryToCurrencyCode.put("China", "CNY");
+        countryToCurrencyCode.put("US", "USD");
+        countryToCurrencyCode.put("England", "GBP");
+        countryToCurrencyCode.put("Japan", "JPY");
+        countryToCurrencyCode.put("Russia", "RUB");
+        countryToCurrencyCode.put("Cayman Islands", "KYD");
+        countryToCurrencyCode.put("Kenya", "KES");
+        countryToCurrencyCode.put("Vietnam", "VND");
 
         //setting up GUI aspects
         setTitle("Currency Converter");
@@ -110,7 +126,12 @@ public class CurrencyConverter extends JFrame {
                 double amountInUSD = fromValue / conversionRateFrom;
                 double convertedValue = amountInUSD * conversionRateTo;
 
-                toAmount.setText(String.format("%.2f", convertedValue));
+                String toCurrencyCode = countryToCurrencyCode.get(toCurrencyStr);
+                Currency currency = Currency.getInstance(toCurrencyCode);
+                NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+                currencyFormat.setCurrency(currency);
+
+                toAmount.setText(currencyFormat.format(convertedValue));
 
             }catch(NumberFormatException ex){
                 JOptionPane.showMessageDialog(CurrencyConverter.this, "Please enter a valid number", "Error", JOptionPane.ERROR_MESSAGE);
