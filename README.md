@@ -43,3 +43,9 @@ Because of this, I could probably make my next small Java projects a little easi
 I did consider utilizing an API from the exchangerates site, but in testing alone, I would be utilizing the feature itself quite a bit, and I don't want to pay the fee for every time over the alloted single usage per day. 
 
 As far as this goes however, I think most of what I would add later on will be either additional or updated values for the currency converter itself, more test cases, and seeing where it is that I can streamline some of the code itself. 
+
+<h4>5/25/25 Update</h4>
+The code itself worked, but felt clunky, and since I'm using this as an excuse to refamiliarize myself with the OOP principles, everything has been moved to their own respective classes. 
+By restructuring the code into more manageable pieces, it will be easier to parse through which of the segments needs fixing, should this ever become something more. 
+For the meantime, I've also added a couple more countries, as well as the Currency Formatting function so that when the amount is converted, it displays properly.
+I've also redone the tests to now handle each aspect, but I haven't added anything new, or at least, haven't tested anything I hadn't already.
